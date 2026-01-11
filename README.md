@@ -1,89 +1,100 @@
-# Time Series Analysis and Forecasting of Cryptocurrency Prices
+# Time Series Analytics on Cryptocurrency Prices (Bitcoin)
 
-## Overview
-Cryptocurrency markets are highly volatile and dynamic, influenced by trends, seasonality, and external factors. Understanding historical price movements and forecasting future trends is essential for data-driven analysis.  
-This project focuses on applying **data analytics and time series techniques** to cryptocurrency price data in order to extract insights, identify patterns, and forecast future prices.
+## Project Overview
+This project focuses on **time series analysis and forecasting of Bitcoin (BTC-USD) prices** using real-world historical data.  
+The goal is to understand price trends, volatility, and market behavior, and to build reliable forecasting models using both **statistical** and **advanced time series techniques**.
 
----
-
-## Problem Statement
-Cryptocurrency prices fluctuate significantly over time, making it difficult for analysts and investors to understand long-term trends and short-term movements. There is a need for structured data analytics approaches that analyze historical price data, identify temporal patterns, and generate forecasts that can support informed decision-making.  
-This project aims to analyze cryptocurrency price data using time series analysis, perform exploratory data analysis (EDA), and build forecasting models to predict future price trends.
+The project was completed as part of a **Data Analytics Internship**, following an end-to-end workflow used by professional data analysts.
 
 ---
 
-## Business Objectives
-- Analyze historical cryptocurrency price trends
-- Identify trends, seasonality, and volatility patterns
-- Forecast future prices using time series models
-- Evaluate model performance using appropriate metrics
-- Present insights through clear visualizations and dashboards
+## Objectives
+- Collect real-world cryptocurrency price data
+- Clean and preprocess messy time series data
+- Perform exploratory data analysis (EDA)
+- Build a baseline forecasting model using **ARIMA**
+- Build an advanced forecasting model using **Prophet**
+- Evaluate and compare models using quantitative metrics
+- Select the best model based on evidence
 
 ---
 
-## Scope of the Project
-### Included
-- Daily cryptocurrency price analysis
-- Data cleaning and preprocessing
-- Exploratory Data Analysis (EDA)
-- Time series forecasting using ARIMA and Prophet
-- Model evaluation using statistical error metrics
-- Visualization of insights
-
-### Excluded
-- Automated trading systems
-- Buy/sell recommendations
-- Financial or investment advice
+## Key Concepts Applied
+- Time Series Analysis  
+- Stationarity & Differencing  
+- Exploratory Data Analysis (EDA)  
+- ARIMA Modeling  
+- Prophet Forecasting  
+- Model Evaluation (RMSE, MAE)  
+- Forecast Interpretation  
 
 ---
 
-## Dataset Description
-- **Cryptocurrency**: Bitcoin (BTC-USD)
-- **Data Source**: Yahoo Finance
-- **Frequency**: Daily
-- **Time Period**: Historical data (last few years)
-- **Key Features**: Open, High, Low, Close, Volume
+## Workflow Summary
+
+### Data Collection
+- Historical Bitcoin price data (`BTC-USD`) collected using Yahoo Finance  
+- Date range: **2019 – 2026**  
+- Raw data preserved for reproducibility  
+
+### Data Cleaning & Preprocessing
+- Removed invalid index rows from the raw dataset  
+- Converted timestamps into a proper `DatetimeIndex`  
+- Ensured numeric data types for price and volume  
+- Selected relevant features (`Close`, `Volume`)  
+- Created a clean, model-ready dataset  
+
+### Exploratory Data Analysis (EDA)
+- Analyzed long-term price trends  
+- Studied trading volume behavior  
+- Used rolling averages to smooth volatility  
+- Analyzed daily returns to understand risk and distribution  
+- Identified high volatility and non-normal return patterns  
+
+### Time Series Modeling
+- **ARIMA(1,1,1)** used as a baseline statistical model  
+- Stationarity validated using the ADF test  
+- Differencing applied to stabilize the series  
+
+### Advanced Forecasting
+- **Prophet** model implemented to handle trend changes and seasonality  
+- Forecasts generated with confidence intervals  
+- Prophet results compared against ARIMA  
+
+---
+
+## Model Evaluation & Comparison
+
+| Model   | RMSE   | MAE   | Interpretation |
+|--------|--------|-------|----------------|
+| ARIMA  | ~39,621 | ~35,678 | Underfits volatile crypto data |
+| Prophet | ~14,636 | ~12,289 | Captures trends and volatility better |
+
+### Final Conclusion
+> Prophet outperformed ARIMA by reducing forecasting error by **more than 60%**, making it a better choice for highly volatile cryptocurrency time series data.
+
+---
+
+## Key Insights
+- Bitcoin prices are **non-stationary and highly volatile**
+- Linear models like ARIMA struggle with nonlinear market behavior
+- Prophet adapts better to trend changes and seasonality
+- Model selection should always be **data-driven and metric-based**
 
 ---
 
 ## Tools & Technologies
-- **Programming Language**: Python
-- **Libraries**:
-  - Pandas
-  - NumPy
-  - Matplotlib
-  - Seaborn
-  - Statsmodels
-  - Prophet
-  - Scikit-learn
-- **Visualization Tool**: Power BI
-- **Version Control**: Git & GitHub
+- Python  
+- Pandas, NumPy  
+- Matplotlib, Seaborn  
+- Statsmodels  
+- Prophet  
+- Scikit-learn  
+- Jupyter Notebook  
 
 ---
 
-## Methodology
-1. Data collection from reliable financial data sources  
-2. Data cleaning and preprocessing for time series analysis  
-3. Exploratory Data Analysis to identify trends and patterns  
-4. Time series modeling using ARIMA and Prophet  
-5. Model evaluation using metrics such as MAE and RMSE  
-6. Visualization of results and insights  
-
----
-
-## Expected Outcomes
-- Understanding of cryptocurrency price behavior
-- Identification of trend and seasonality components
-- Short-term price forecasts using statistical models
-- Clear visual insights for analytical interpretation
-
----
-
-## Learning Outcomes
-- Practical experience with time series data
-- Hands-on implementation of ARIMA and Prophet models
-- Strong understanding of EDA for temporal datasets
-- Experience in building analytics dashboards
-- Improved ability to explain data-driven insights in interviews
-
----
+## How to Run
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
